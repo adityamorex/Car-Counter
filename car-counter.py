@@ -24,7 +24,7 @@ classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "trai
 mask = cv2.imread("C:/Users/adity/OneDrive/Desktop/Projects/Object Detection/Car-Counter/mask.png")
 
 # Tracking
-tracker = Sort(max_age=20, min_hits=3, iou_threshold=0.3)
+Tracking_values = Sort(max_age=20, min_hits=3, iou_threshold=0.3)
 
 limits = [400, 297, 673, 297]
 totalCount = []
@@ -62,10 +62,10 @@ while True:
                 currentArray = np.array([x1, y1, x2, y2, conf])
                 detections = np.vstack((detections, currentArray))
 
-    resultTracker = tracker.update(detections)
+    resultTracking_values = Tracking_values.update(detections)
 
     cv2.line(img, (limits[0], limits[1]), (limits[2], limits[3]), (0, 0, 255), 5)
-    for result in resultTracker:
+    for result in resultTracking_values:
         x1, y1, x2, y2, id = result
         x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
         print(result)
